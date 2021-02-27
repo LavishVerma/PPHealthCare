@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
     this.service.RegisterUser(user).subscribe(data => {
       
       this.route.navigate(['main']);
-      alert('Registration Successfull. Please login now.');
+      // alert('Registration Successfull. Please login now.');
     } );
   }
 

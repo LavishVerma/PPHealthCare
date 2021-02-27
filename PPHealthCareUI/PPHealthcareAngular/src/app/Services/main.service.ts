@@ -6,6 +6,10 @@ import { Injectable } from '@angular/core';
 })
 export class MainService {
 
+  DeleteUser(id: number) {
+    return this.http.delete('http://localhost:9001/user/delete/' + id);
+  }
+
   constructor(private http: HttpClient) { }
   
   GetAllUser() {

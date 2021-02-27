@@ -38,4 +38,9 @@ public class User_service {
 		return (List<Users>) repository.findAll();
 	}
 
+	public Boolean deleteData(Long id) {
+		repository.deleteById(id);
+		return true;
+	}
+
 }
