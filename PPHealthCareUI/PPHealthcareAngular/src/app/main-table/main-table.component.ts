@@ -1,4 +1,7 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { RegisterModule } from '../Modules/RegisterModule';
+import { MainService } from '../Services/main.service';
 
 export interface PeriodicElement {
   name: string;
@@ -27,12 +30,21 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class MainTableComponent implements OnInit {
 
-  constructor() { }
+  UsersList: RegisterModule[] = [];
+
+  constructor(private service: MainService,private datepipe: DatePipe) { }
 
   ngOnInit(): void {
+    this.service.GetAllUser().subscribe((list:any)=>{
+      this.UsersList=list;
+      this.dataSource=list;
+      console.log(this.UsersList);
+      
+     
+    });
   }
-  
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+
+  displayedColumns: string[] = ['ID', 'Name', 'Activation_status', 'Date_of_Birth','Action'];
   dataSource = ELEMENT_DATA;
 
 }

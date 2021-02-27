@@ -10,6 +10,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import { MainTableComponent } from './main-table/main-table.component';
+import { DatePipe } from '@angular/common'
+
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { MainTableComponent } from './main-table/main-table.component';
 
     
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
