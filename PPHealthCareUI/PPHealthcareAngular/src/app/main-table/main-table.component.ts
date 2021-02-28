@@ -37,6 +37,7 @@ export class MainTableComponent implements OnInit {
   EditModalData: RegisterModule | undefined;
   Activation_status_options: string[]=['true','false'];
   EditForm!: FormGroup;
+  datebeforepipe!: Date;
 
   constructor(private fb: FormBuilder, private service: MainService,private datepipe: DatePipe) { }
 
@@ -72,20 +73,24 @@ export class MainTableComponent implements OnInit {
     this.EditForm.get('id')?.setValue(user.id);
     this.EditForm.get('name')?.setValue(user.name);
     this.EditForm.get('activation_status')?.setValue(user.activation_status);
+    this.datebeforepipe=user.birth_date;
+    
     this.EditForm.get('date_of_birth')?.setValue(this.datepipe.transform(user.birth_date,'mediumDate'));
     
     
   }
-
-  OnSubmit(){
-    const user: RegisterModule = { id: this.getValue('id') ,name: this.getValue('name'),  activation_status: this.getValue('activation_status'), birth_date: this.getValue('date_of_birth')};
+  
+  OnSubmit(button: HTMLButtonElement ){
+    const user: RegisterModule = { id: this.getValue('id') ,name: this.getValue('name'),  activation_status: this.getValue('activation_status'), birth_date: this.datebeforepipe};
    
-    // this.service.RegisterUser(user).subscribe(data => {
-      
-    //   this.route.navigate(['main']);
-    //   // alert('Registration Successfull. Please login now.');
-    // } );
-    // console.log(this.EditForm);
+     this.service.EditUser(user).subscribe(data => {
+     
+      button.click();
+      this.ngOnInit();
+    
+ 
+     } );
+    
     
   }
 

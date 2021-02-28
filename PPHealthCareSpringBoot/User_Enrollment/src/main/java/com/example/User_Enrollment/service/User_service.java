@@ -43,4 +43,9 @@ public class User_service {
 		return true;
 	}
 
+	public Boolean editData(Users data) {
+		repository.save(data);
+		return true;
+	}
+
 }

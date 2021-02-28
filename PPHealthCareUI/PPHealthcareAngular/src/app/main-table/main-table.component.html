@@ -55,7 +55,7 @@
         <h2 class="modal-title" id="exampleModalLabel">Edit Enrollee</h2>
       </div>
       <div class="modal-body">
-        <form [formGroup]="EditForm" (ngSubmit)="OnSubmit()">
+        <form [formGroup]="EditForm" (ngSubmit)="OnSubmit(close)">
           <div class="form-group">
             <label  class="col-form-label">ID</label>
             <input type="text" class="form-control" formControlName="id" readonly>
@@ -79,8 +79,8 @@
              <input type="text" class="form-control" readonly  formControlName="date_of_birth" >
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-success">Save changes</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit"  class="btn btn-success">Save changes</button>
+            <button type="button" #close class="btn btn-danger" data-dismiss="modal">Close</button>
             
           </div>
         </form>
