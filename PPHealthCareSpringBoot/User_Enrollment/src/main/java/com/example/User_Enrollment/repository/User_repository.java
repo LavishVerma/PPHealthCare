@@ -8,10 +8,6 @@ import com.example.User_Enrollment.model.Users;
 @Repository
 public interface User_repository extends CrudRepository<Users,Long> {
 
-	
-	/**
-	 * @Query("select c from CRUDentity c")
-	List<CRUDentity> getallData();
-	 */
+
 	 
 }
