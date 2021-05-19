@@ -37,7 +37,7 @@ public class User_controller {
 	
 	@GetMapping("/get")
 	public ResponseEntity<List<Users>> GetAllFunction()
-	{
+	{//lIST 
 		List<Users> list=user_service.getAllData();
 	     return new ResponseEntity<List<Users>>(list,HttpStatus.OK);
 	}
